@@ -62,7 +62,7 @@
  *   $scope.$on('$destroy', function() {
  *     $scope.popover.remove();
  *   });
- *   // Execute action on hide popover
+ *   // Execute action on hidden popover
  *   $scope.$on('popover.hidden', function() {
  *     // Execute action
  *   });
@@ -204,7 +204,7 @@ function($ionicModal, $ionicPosition, $document, $window) {
      * controller (ionicPopover is built on top of $ionicPopover).
      */
     fromTemplate: function(templateString, options) {
-      return $ionicModal.fromTemplate(templateString, ionic.Utils.extend(POPOVER_OPTIONS, options || {}));
+      return $ionicModal.fromTemplate(templateString, ionic.Utils.extend({}, POPOVER_OPTIONS, options));
     },
     /**
      * @ngdoc method
@@ -215,7 +215,7 @@ function($ionicModal, $ionicPosition, $document, $window) {
      * an {@link ionic.controller:ionicPopover} controller (ionicPopover is built on top of $ionicPopover).
      */
     fromTemplateUrl: function(url, options) {
-      return $ionicModal.fromTemplateUrl(url, ionic.Utils.extend(POPOVER_OPTIONS, options || {}));
+      return $ionicModal.fromTemplateUrl(url, ionic.Utils.extend({}, POPOVER_OPTIONS, options));
     }
   };
 
