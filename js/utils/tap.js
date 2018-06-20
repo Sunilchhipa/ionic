@@ -51,7 +51,7 @@
  * - Works with labels surrounding inputs
  * - Does not fire off a click if the user moves the pointer too far
  * - Adds and removes an 'activated' css class
- * - Multiple [unit tests](https://github.com/driftyco/ionic/blob/1.x/test/unit/utils/tap.unit.js) for each scenario
+ * - Multiple [unit tests](https://github.com/ionic-team/ionic/blob/1.x/test/unit/utils/tap.unit.js) for each scenario
  *
  */
 /*
@@ -362,7 +362,7 @@ function tapMouseDown(e) {
     e.stopPropagation();
 
     if (!ionic.Platform.isEdge() && (!ionic.tap.isTextInput(e.target) || tapLastTouchTarget !== e.target) &&
-      !isSelectOrOption(e.target.tagName) && !ionic.tap.isVideo(e.target)) {
+      !isSelectOrOption(e.target.tagName) && !e.target.isContentEditable && !ionic.tap.isVideo(e.target)) {
       // If you preventDefault on a text input then you cannot move its text caret/cursor.
       // Allow through only the text input default. However, without preventDefault on an
       // input the 300ms delay can change focus on inputs after the keyboard shows up.

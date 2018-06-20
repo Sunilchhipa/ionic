@@ -8,10 +8,10 @@ echo "##### app-base/publish.sh"
 echo "#####"
 
 function init {
-  APPBASE_DIR=$HOME/ionic-app-base
-  APPBASE_LIB_DIR=$APPBASE_DIR/www/lib/ionic
+  APPBASE_DIR=$HOME/starters
+  APPBASE_LIB_DIR=$APPBASE_DIR/ionic1/base/www/lib/ionic
 
-  ../clone/clone.sh --repository="ionic-app-base" \
+  ../clone/clone.sh --repository="starters" \
     --depth="1" \
     --directory="$APPBASE_DIR" \
     --branch="master"
@@ -31,7 +31,7 @@ function run {
   cp -Rf scss $APPBASE_LIB_DIR
 
   echo "-- Updating bower dependency..."
-  replaceJsonProp "$APPBASE_DIR/bower.json" "ionic" "driftyco\/ionic-bower#$VERSION"
+  replaceJsonProp "$APPBASE_DIR/bower.json" "ionic" "ionic-team\/ionic-bower#$VERSION"
 
   cd $APPBASE_DIR
 
@@ -42,7 +42,7 @@ function run {
   git commit -am "release: update ionic to v$VERSION"
   git push -q origin master
 
-  echo "-- ionic-app-base published v$VERSION successfully!"
+  echo "-- committed v$VERSION to starters repo successfully!"
 }
 
 source $(dirname $0)/../utils.inc
